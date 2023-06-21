@@ -27,6 +27,7 @@ class HomeController extends AbstractController
                         ->addSelect('t')
                     ;
                 },
+                'autocomplete' => true,
             ])
             ->getForm()
         ;
