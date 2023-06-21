@@ -18,7 +18,6 @@ class UserAutocompleteField extends AbstractType
     {
         $resolver->setDefaults([
             'class' => User::class,
-            'placeholder' => 'Please select',
             'filter_query' => function (QueryBuilder $qb, string $query) {
                 $queries = explode(' ', strval(preg_replace('/\s+/', ' ', trim($query))));
                 $qb
@@ -32,6 +31,10 @@ class UserAutocompleteField extends AbstractType
                 }
                 $qb->andWhere($qb->expr()->andX(...$conditions));
             },
+            'attr' => [
+                'data-placeholder' => 'Please select',
+                'data-controller' => 'autocomplete',
+            ],
         ]);
     }
 
